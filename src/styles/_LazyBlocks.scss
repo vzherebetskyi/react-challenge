@@ -1,0 +1,38 @@
+.first-lazy-style__left {
+  position: relative;  
+    .image-placeholder {
+        height: 20rem;
+        width: 41rem;
+        position: absolute;
+        right: -10%;
+        top: 2rem;
+        border-radius: 24px;
+        background: lightgray;
+    }
+    @media (max-width: 1300px) {
+      .image-placeholder {
+        right: 0;
+        top: -5rem;
+        left: 50%;
+        transform: translate(-50%, 0);
+      }
+    }
+    @media (max-width: 800px) {
+    .image-placeholder {
+      width: 34rem;
+      top: -8rem;
+      }
+    }
+   @media (max-width: 550px) {
+   .image-placeholder {
+    width: 22rem;
+    top: -4rem;
+  } 
+}
+}
+
+.lazy-second-container {
+  height: 30rem;
+  border-radius: 24px;
+  background: lightgray;
+}

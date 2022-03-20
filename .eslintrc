@@ -1,0 +1,17 @@
+{
+    "extends": [
+      "plugin:react/recommended",
+      "plugin:prettier/recommended",
+      "prettier/react",
+      "react-app"
+    ],
+    "plugins": ["react-hooks", "prettier"],
+    "rules": {
+      "react-hooks/rules-of-hooks": "error",
+      "react/prop-types": 0,
+      "react/display-name": 0,
+      "react/no-unescaped-entities": 0,
+      "camelcase": 0,
+      "consistent-return": 0
+    }
+  }  
