@@ -13,30 +13,13 @@ body {
   background: rgb(12, 11, 19);
 }
 
-// // fonts
+// fonts
 
-// @font-face {
-//   font-family: "audifont";
-//   src: url("../assets/fonts/auditype-normal.woff") format('woff');
-// }
-
-// @font-face {
-//   font-family: "audifont";
-//   src: url("../assets/fonts/auditype-bold.woff") format('woff');
-//   font-weight: bold;
-// }
-
-// @font-face {
-//   font-family: "audifont-extended";
-//   src: url("../assets/fonts/auditype-extendednormal.woff") format('woff');
-// }
-
-// @font-face {
-//   font-family: "audifont-extended";
-//   src: url("../assets/fonts/auditype-extendedbold.woff") format('woff');
-//   font-weight: bold;
-// }
+$small-size: 0.8rem;
+$middle-size: 1.5rem;
+$large-size: 3.5rem;
 
 // colors
 
 $base-black: rgb(12, 11, 19);
+$dark-yellow: #F8D126;

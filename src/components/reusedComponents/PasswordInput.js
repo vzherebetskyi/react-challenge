@@ -4,7 +4,7 @@ import Lock from '../../assets/images/lock.svg';
 import Eye from '../../assets/images/eye.svg';
 
 const PasswordInput = ({
-  credentials,
+  inputValue,
   errors,
   handleChangeInput,
   inputName,
@@ -25,7 +25,7 @@ const PasswordInput = ({
         placeholder={inputPlaceholder}
         type={showPassw ? 'text' : 'password'}
         name={inputName}
-        value={credentials[inputName]}
+        value={inputValue}
         onChange={e =>
           handleChangeInput({
             name: e.target.name,

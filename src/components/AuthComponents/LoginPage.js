@@ -15,6 +15,7 @@ import { useEnterListener } from '../../customHooks/useBtnListener';
 import { generateUser } from '../../utils/utilFunctions';
 import Mail from '../../assets/images/mail.svg';
 import PasswordInput from '../reusedComponents/PasswordInput';
+import BaseInput from '../reusedComponents/BaseInput';
 
 const LoginPage = props => {
   const dispatch = useDispatch();
@@ -124,23 +125,17 @@ const LoginPage = props => {
           handleValidate();
         }}
       >
-        <div className="input-container">
-          <img src={Mail} alt="mail" />
-          <input
-            autoComplete="off"
-            placeholder="E-Mail Address"
-            type="text"
-            name="email"
-            value={credentials.email}
-            onChange={e =>
-              handleChangeInput({ name: e.target.name, value: e.target.value })
-            }
-          />
-          {errors.email && <p className="error-message">{errors.email}</p>}
-        </div>
+        <BaseInput
+          handleChangeInput={handleChangeInput}
+          inputValue={credentials['email']}
+          errors={errors}
+          inputName="email"
+          inputPlaceholder="E-Mail Address"
+          img={Mail}
+        />
         <PasswordInput
           handleChangeInput={handleChangeInput}
-          credentials={credentials}
+          inputValue={credentials['password']}
           errors={errors}
           inputName="password"
           inputPlaceholder="Password"
@@ -158,9 +153,9 @@ const LoginPage = props => {
           </label>
         </div>
         <div className="parall-styled-btn-container">
-          <div onClick={handleValidate} className="parall-styled-btn">
-            <button type="submit">LOGIN</button>
-          </div>
+          <button type="submit" className="parall-styled-btn">
+            <div>LOGIN</div>
+          </button>
         </div>
       </form>
       <div className="auth-container-bottom-text">

@@ -1,61 +1,51 @@
 .error-message {
   color: red;
-  font-size: 0.7rem;
+  font-size: $small-size;
   position: absolute;
-  bottom: -15px;
   left: 0;
 }
 
 .parall-styled-btn-container {
-  position: relative;
   width: 11rem;
   height: 4.2rem;
+  position: relative;
 }
 
 .parall-styled-btn {
-  position: absolute;
   width: 11rem;
   height: 4.2rem;
+  position: absolute;
   left: 55%;
   right: 45%;
   display: inline-block;
-  background: #F8D126;
+  background: $dark-yellow;
   transform: skewX(-22deg);
   border-radius: 8px;
   z-index: 1;
   cursor: pointer;
-  button {
+  outline: none;
+  div {
     display: block;
     transform: skewX(22deg); // unskew inner content
     border: none;
     background: none;
-    margin: 1.2rem auto 0 auto;
     font-family: 'Nova Flat', cursive;
-    font-size: 1.5rem;
+    font-size: $middle-size;
     font-weight: bold;
     cursor: pointer;
   }
   &:hover {
     width: 11.5rem;
     height: 5rem;
-    button {
-      margin-top: 1.5rem;
-    }
   }
   @media (max-width: 768px) {
     width: 9rem;
     height: 3.5rem;
     margin-top: 1.5rem;
-    button {
-      margin-top: 0.8rem;
-    }
     &:hover {
       width: 11rem;
       height: 4.2rem;
       left: 45%;
-      button {
-        margin-top: 1.2rem;
-      }
     }
   }
 }
@@ -66,7 +56,7 @@
 
 .base-title {
   color: #fff;
-  font-size: 3.5rem;
+  font-size: $large-size;
   font-family: 'Nova Flat', cursive;
   margin-bottom: 2rem;
   @media (max-width: 768px) {

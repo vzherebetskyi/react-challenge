@@ -1,8 +1,17 @@
-import { signInWithEmailAndPassword, signOut } from 'firebase/auth';
+import {
+  signInWithEmailAndPassword,
+  createUserWithEmailAndPassword,
+  updateProfile,
+  signOut,
+} from 'firebase/auth';
 
 import { auth } from '../firebase/firebase';
 import { handleShowNotification } from './notifications';
-import { setUserProfile, clearUserProfile } from './userProfile';
+import {
+  handleUpdateUserProfile,
+  setUserProfile,
+  clearUserProfile,
+} from './userProfile';
 
 // actions type constants
 
@@ -26,6 +35,35 @@ export const startLoginUser = (email, password) => {
           console.log('success', userCredential);
           dispatch(loginUser(userCredential.user.uid));
           dispatch(setUserProfile(userCredential.user));
+        })
+        .catch(error => {
+          console.log(error.message);
+          dispatch(handleShowNotification(error.message));
+        });
+    };
+  };
+};
+
+// Sign up user
+
+export const startUserSignup = (username, email, password) => {
+  return dispatch => {
+    return () => {
+      dispatch(handleShowNotification('Pls wait you are being signed up'));
+      createUserWithEmailAndPassword(auth, email, password)
+        .then(userCredential => {
+          console.log('success', userCredential);
+          dispatch(handleShowNotification('Signed up successfully'));
+
+          return updateProfile(auth.currentUser, {
+            displayName: username,
+          });
+        })
+        .then(() => {
+          console.log('User profile successfully updated');
+          dispatch(
+            handleUpdateUserProfile('username', auth.currentUser.displayName)
+          );
         })
         .catch(error => {
           console.log(error.message);

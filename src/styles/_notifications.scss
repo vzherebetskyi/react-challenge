@@ -10,6 +10,9 @@
   -moz-animation: fadeIn 1s;
   -o-animation: fadeIn 1s;
   -ms-animation: fadeIn 1s;
+  @media (max-width: 768px) {
+    font-size: $small-size;
+  }
 }
 
 @keyframes fadeIn {

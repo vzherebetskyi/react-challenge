@@ -44,6 +44,8 @@ onAuthStateChanged(auth, user => {
     store.dispatch(logoutUser());
     store.dispatch(clearUserProfile());
     renderApp();
-    // history.push('/');
   }
 });
+
+//refactor codebase
+// add tests

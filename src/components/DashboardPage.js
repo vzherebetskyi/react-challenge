@@ -21,9 +21,13 @@ const DashboardPage = () => {
             <h3>{userProfile.email}</h3>
           </div>
           <div className="parall-styled-btn-container">
-            <div style={{ marginTop: '2rem' }} className="parall-styled-btn">
-              <button onClick={dispatch(startLogoutUser())}>Logout</button>
-            </div>
+            <button
+              style={{ marginTop: '2rem' }}
+              className="parall-styled-btn"
+              onClick={dispatch(startLogoutUser())}
+            >
+              <div>Logout</div>
+            </button>
           </div>
         </div>
       </div>

@@ -1,11 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { createUserWithEmailAndPassword, updateProfile } from 'firebase/auth';
 
 import AuthComponentWrapper from './AuthComponentWrapper';
-import { auth } from '../../firebase/firebase';
-import { handleChangeEmail } from '../../actions/auth';
-import { handleUpdateUserProfile } from '../../actions/userProfile';
+import { handleChangeEmail, startUserSignup } from '../../actions/auth';
 import { handleShowNotification } from '../../actions/notifications';
 import {
   errorMessages,
@@ -16,6 +13,7 @@ import { useEnterListener } from '../../customHooks/useBtnListener';
 import Mail from '../../assets/images/mail.svg';
 import UserImg from '../../assets/images/user.svg';
 import PasswordInput from '../reusedComponents/PasswordInput';
+import BaseInput from '../reusedComponents/BaseInput';
 
 const RegisterPage = props => {
   const dispatch = useDispatch();
@@ -78,32 +76,6 @@ const RegisterPage = props => {
     props.history.push('/');
   };
 
-  const handleSignUp = () => {
-    createUserWithEmailAndPassword(
-      auth,
-      credentials.email,
-      credentials.password
-    )
-      .then(userCredential => {
-        console.log('success', userCredential);
-        dispatch(handleShowNotification('Signed up successfully'));
-
-        return updateProfile(auth.currentUser, {
-          displayName: credentials.username,
-        });
-      })
-      .then(() => {
-        console.log('User profile successfully updated');
-        dispatch(
-          handleUpdateUserProfile('username', auth.currentUser.displayName)
-        );
-      })
-      .catch(error => {
-        console.log(error.message);
-        dispatch(handleShowNotification(error.message));
-      });
-  };
-
   const handleValidate = () => {
     let errorIsPresent;
     const newErrors = { ...errors };
@@ -142,7 +114,13 @@ const RegisterPage = props => {
     setErrors(newErrors);
     if (!errorIsPresent) {
       if (useFirebase) {
-        handleSignUp();
+        dispatch(
+          startUserSignup(
+            credentials.username,
+            credentials.email,
+            credentials.password
+          )
+        )();
       } else
         dispatch(
           handleShowNotification(
@@ -161,36 +139,22 @@ const RegisterPage = props => {
           handleValidate();
         }}
       >
-        <div className="input-container">
-          <img src={UserImg} alt="user" />
-          <input
-            autoComplete="off"
-            placeholder="Username"
-            type="text"
-            name="username"
-            value={credentials.username}
-            onChange={e =>
-              handleChangeInput({ name: e.target.name, value: e.target.value })
-            }
-          />
-          {errors.username && (
-            <p className="error-message">{errors.username}</p>
-          )}
-        </div>
-        <div className="input-container">
-          <img src={Mail} alt="mail" />
-          <input
-            autoComplete="off"
-            placeholder="E-Mail Address"
-            type="text"
-            name="email"
-            value={credentials.email}
-            onChange={e =>
-              handleChangeInput({ name: e.target.name, value: e.target.value })
-            }
-          />
-          {errors.email && <p className="error-message">{errors.email}</p>}
-        </div>
+        <BaseInput
+          handleChangeInput={handleChangeInput}
+          inputValue={credentials['username']}
+          errors={errors}
+          inputName="username"
+          inputPlaceholder="Username"
+          img={UserImg}
+        />
+        <BaseInput
+          handleChangeInput={handleChangeInput}
+          inputValue={credentials['email']}
+          errors={errors}
+          inputName="email"
+          inputPlaceholder="E-Mail Address"
+          img={Mail}
+        />
         <PasswordInput
           handleChangeInput={handleChangeInput}
           credentials={credentials}
@@ -233,16 +197,15 @@ const RegisterPage = props => {
           </label>
         </div>
         <div className="parall-styled-btn-container">
-          <div
-            onClick={!termsOfServiceAgreed ? null : handleValidate}
+          <button
+            type="submit"
+            disabled={!termsOfServiceAgreed}
             className={`parall-styled-btn ${
               !termsOfServiceAgreed ? 'pntr-events-none' : ''
             }`}
           >
-            <button type="submit" disabled={!termsOfServiceAgreed}>
-              Sign Up
-            </button>
-          </div>
+            <div>Sign Up</div>
+          </button>
         </div>
       </form>
       <div className="auth-container-bottom-text">
