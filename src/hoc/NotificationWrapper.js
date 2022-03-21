@@ -20,7 +20,9 @@ const NotificationWrapper = ({ children }) => {
 
   return (
     <div>
-      {notification && <div>{notification}</div>}
+      {notification && (
+        <div className="notification-container">{notification}</div>
+      )}
       {children}
     </div>
   );

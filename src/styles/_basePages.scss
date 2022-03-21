@@ -1,0 +1,33 @@
+.page-container {
+  max-width: 55rem;  
+  height: 100vh;
+  background: url('../assets/images/background-img.jpg') center center no-repeat;
+  background-size: cover;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto;
+}
+
+.page-wrapper {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  height: 100vh;
+  background: rgba(0,0,0,0.7);
+}
+
+.text-container {
+  margin-top: 2rem;
+  padding: 1rem;
+  font-size: 1.5rem;
+  @media (max-width: 768px) {
+    font-size: 1rem;       
+  }
+}
+
+.btn-styled {
+  cursor: pointer;
+  text-align: center;
+}

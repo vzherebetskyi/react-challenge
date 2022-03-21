@@ -2,16 +2,20 @@ import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { createUserWithEmailAndPassword, updateProfile } from 'firebase/auth';
 
-import { auth } from '../firebase/firebase';
-import { handleChangeEmail } from '../actions/auth';
-import { handleUpdateUserProfile } from '../actions/userProfile';
-import { handleShowNotification } from '../actions/notifications';
+import AuthComponentWrapper from './AuthComponentWrapper';
+import { auth } from '../../firebase/firebase';
+import { handleChangeEmail } from '../../actions/auth';
+import { handleUpdateUserProfile } from '../../actions/userProfile';
+import { handleShowNotification } from '../../actions/notifications';
 import {
   errorMessages,
   validEmailRegexp,
   validStrongPassword,
-} from '../utils/constants';
-import { useEnterListener } from '../customHooks/useBtnListener';
+} from '../../utils/constants';
+import { useEnterListener } from '../../customHooks/useBtnListener';
+import Mail from '../../assets/images/mail.svg';
+import UserImg from '../../assets/images/user.svg';
+import PasswordInput from '../reusedComponents/PasswordInput';
 
 const RegisterPage = props => {
   const dispatch = useDispatch();
@@ -149,91 +153,104 @@ const RegisterPage = props => {
   };
 
   return (
-    <form
-      onKeyPress={e => e.key === 'Enter' && e.preventDefault()}
-      onSubmit={e => {
-        e.preventDefault();
-        handleValidate();
-      }}
-    >
-      <input
-        autoComplete="off"
-        placeholder="Username"
-        type="text"
-        name="username"
-        value={credentials.username}
-        onChange={e =>
-          handleChangeInput({ name: e.target.name, value: e.target.value })
-        }
-      />
-      {errors.username && <p>{errors.username}</p>}
-      <input
-        autoComplete="off"
-        placeholder="E-Mail Address"
-        type="text"
-        name="email"
-        value={credentials.email}
-        onChange={e =>
-          handleChangeInput({ name: e.target.name, value: e.target.value })
-        }
-      />
-      {errors.email && <p>{errors.email}</p>}
-      <input
-        autoComplete="off"
-        placeholder="Password"
-        type="text"
-        name="password"
-        value={credentials.password}
-        onChange={e =>
-          handleChangeInput({ name: e.target.name, value: e.target.value })
-        }
-      />
-      {errors.password && <p>{errors.password}</p>}
-      <input
-        autoComplete="off"
-        placeholder="Confirm password"
-        type="text"
-        name="confirmpassw"
-        value={credentials.confirmpassw}
-        onChange={e =>
-          handleChangeInput({ name: e.target.name, value: e.target.value })
-        }
-      />
-      {errors.confirmpassw && <p>{errors.confirmpassw}</p>}
-      <div>
-        <input
-          type="checkbox"
-          id="termsOfService"
-          name="termsOfService"
-          checked={termsOfServiceAgreed}
-          onChange={() => setTermsOfServiceAgreed(prevState => !prevState)}
+    <AuthComponentWrapper title="SIGN UP" history={props.history}>
+      <form
+        onKeyPress={e => e.key === 'Enter' && e.preventDefault()}
+        onSubmit={e => {
+          e.preventDefault();
+          handleValidate();
+        }}
+      >
+        <div className="input-container">
+          <img src={UserImg} alt="user" />
+          <input
+            autoComplete="off"
+            placeholder="Username"
+            type="text"
+            name="username"
+            value={credentials.username}
+            onChange={e =>
+              handleChangeInput({ name: e.target.name, value: e.target.value })
+            }
+          />
+          {errors.username && (
+            <p className="error-message">{errors.username}</p>
+          )}
+        </div>
+        <div className="input-container">
+          <img src={Mail} alt="mail" />
+          <input
+            autoComplete="off"
+            placeholder="E-Mail Address"
+            type="text"
+            name="email"
+            value={credentials.email}
+            onChange={e =>
+              handleChangeInput({ name: e.target.name, value: e.target.value })
+            }
+          />
+          {errors.email && <p className="error-message">{errors.email}</p>}
+        </div>
+        <PasswordInput
+          handleChangeInput={handleChangeInput}
+          credentials={credentials}
+          errors={errors}
+          inputName="password"
+          inputPlaceholder="Password"
         />
-        <label htmlFor="termsOfService">
-          I have read and agree with{' '}
-          <a target="_blank" href="/terms_of_service">
-            Terms of Service
-          </a>
-        </label>
-      </div>
-      <div>
-        <input
-          type="checkbox"
-          id="useFirebase"
-          name="useFirebase"
-          checked={useFirebase}
-          onChange={() => setUseFirebase(prevState => !prevState)}
+        <PasswordInput
+          handleChangeInput={handleChangeInput}
+          credentials={credentials}
+          errors={errors}
+          inputName="confirmpassw"
+          inputPlaceholder="Confirm password"
         />
-        <label htmlFor="useFirebase">
-          I would like to use Firebase for registration
-        </label>
+        <div className="checkbox-container" style={{ marginBottom: 0 }}>
+          <input
+            type="checkbox"
+            id="termsOfService"
+            name="termsOfService"
+            checked={termsOfServiceAgreed}
+            onChange={() => setTermsOfServiceAgreed(prevState => !prevState)}
+          />
+          <label htmlFor="termsOfService">
+            I have read and agree with{' '}
+            <a target="_blank" href="/terms_of_service">
+              Terms of Service
+            </a>
+          </label>
+        </div>
+        <div className="checkbox-container">
+          <input
+            type="checkbox"
+            id="useFirebase"
+            name="useFirebase"
+            checked={useFirebase}
+            onChange={() => setUseFirebase(prevState => !prevState)}
+          />
+          <label htmlFor="useFirebase">
+            I would like to use Firebase for registration
+          </label>
+        </div>
+        <div className="parall-styled-btn-container">
+          <div
+            onClick={!termsOfServiceAgreed ? null : handleValidate}
+            className={`parall-styled-btn ${
+              !termsOfServiceAgreed ? 'pntr-events-none' : ''
+            }`}
+          >
+            <button type="submit" disabled={!termsOfServiceAgreed}>
+              Sign Up
+            </button>
+          </div>
+        </div>
+      </form>
+      <div className="auth-container-bottom-text">
+        <p onClick={switchToLogin}>
+          <span>Back to Login</span>
+        </p>
       </div>
-      <button type="submit" disabled={!termsOfServiceAgreed}>
-        Sign Up
-      </button>
-      <button type="button" onClick={switchToLogin}>
-        Back to Login
-      </button>
-    </form>
+    </AuthComponentWrapper>
   );
 };
 

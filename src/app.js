@@ -10,7 +10,7 @@ import { loginUser, logoutUser } from './actions/auth';
 import { setUserProfile, clearUserProfile } from './actions/userProfile';
 import LoadingPage from './components/LoadingPage';
 import { auth } from './firebase/firebase';
-// import './styles/styles.scss';
+import './styles/styles.scss';
 
 const store = configureStore();
 
@@ -44,6 +44,6 @@ onAuthStateChanged(auth, user => {
     store.dispatch(logoutUser());
     store.dispatch(clearUserProfile());
     renderApp();
-    history.push('/');
+    // history.push('/');
   }
 });

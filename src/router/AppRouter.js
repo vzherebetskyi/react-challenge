@@ -4,8 +4,8 @@ import createHistory from 'history/createBrowserHistory';
 
 import PublicRoute from './PublicRoute';
 import PrivateRoute from './PrivateRoute';
-import LoginPage from '../components/LoginPage';
-import RegisterPage from '../components/RegisterPage';
+import LoginPage from '../components/AuthComponents/LoginPage';
+import RegisterPage from '../components/AuthComponents/RegisterPage';
 import FAQPage from '../components/FAQPage';
 import DashboardPage from '../components/DashboardPage';
 import NotFoundPage from '../components/NotFoundPage';

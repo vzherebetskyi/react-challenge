@@ -1,10 +1,14 @@
 import React from 'react';
 
-const DashboardPage = () => (
-  <div>
-    <h1>Not Found</h1>
-    <h3>Oops, this page is being developed or does not exist</h3>
+const NotFoundPage = () => (
+  <div className="page-container">
+    <div className="page-wrapper" style={{ alignItems: 'center' }}>
+      <div>
+        <h1>Not Found</h1>
+        <h3>Oops, this page is being developed or does not exist</h3>
+      </div>
+    </div>
   </div>
 );
 
-export default DashboardPage;
+export default NotFoundPage;

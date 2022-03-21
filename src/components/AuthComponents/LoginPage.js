@@ -7,11 +7,14 @@ import {
   updateProfile,
 } from 'firebase/auth';
 
-import { handleChangeEmail, startLoginUser } from '../actions/auth';
-import { handleShowNotification } from '../actions/notifications';
-import { errorMessages } from '../utils/constants';
-import { useEnterListener } from '../customHooks/useBtnListener';
-import { generateUser } from '../utils/utilFunctions';
+import AuthComponentWrapper from './AuthComponentWrapper';
+import { handleChangeEmail, startLoginUser } from '../../actions/auth';
+import { handleShowNotification } from '../../actions/notifications';
+import { errorMessages } from '../../utils/constants';
+import { useEnterListener } from '../../customHooks/useBtnListener';
+import { generateUser } from '../../utils/utilFunctions';
+import Mail from '../../assets/images/mail.svg';
+import PasswordInput from '../reusedComponents/PasswordInput';
 
 const LoginPage = props => {
   const dispatch = useDispatch();
@@ -113,59 +116,70 @@ const LoginPage = props => {
   };
 
   return (
-    <form
-      onKeyPress={e => e.key === 'Enter' && e.preventDefault()}
-      onSubmit={e => {
-        e.preventDefault();
-        handleValidate();
-      }}
-    >
-      <input
-        autoComplete="off"
-        placeholder="E-Mail Address"
-        type="text"
-        name="email"
-        value={credentials.email}
-        onChange={e =>
-          handleChangeInput({ name: e.target.name, value: e.target.value })
-        }
-      />
-      {errors.email && <p>{errors.email}</p>}
-      <input
-        autoComplete="off"
-        placeholder="Password"
-        type="text"
-        name="password"
-        value={credentials.password}
-        onChange={e =>
-          handleChangeInput({ name: e.target.name, value: e.target.value })
-        }
-      />
-      {errors.password && <p>{errors.password}</p>}
-      <div>
-        <input
-          type="checkbox"
-          id="useFirebase"
-          name="useFirebase"
-          checked={useFirebase}
-          onChange={() => setUseFirebase(prevState => !prevState)}
-        />
-        <label htmlFor="useFirebase">
-          I would like to use Firebase for login
-        </label>
-      </div>
-      <button type="submit">Login</button>
-      <button type="button" onClick={switchToSignUp}>
-        SignUp
-      </button>
-      <button
-        type="button"
-        onClick={handleGenerateUser}
-        disabled={!useFirebase}
+    <AuthComponentWrapper title="LOGIN" history={props.history}>
+      <form
+        onKeyPress={e => e.key === 'Enter' && e.preventDefault()}
+        onSubmit={e => {
+          e.preventDefault();
+          handleValidate();
+        }}
       >
-        Generate a user
-      </button>
-    </form>
+        <div className="input-container">
+          <img src={Mail} alt="mail" />
+          <input
+            autoComplete="off"
+            placeholder="E-Mail Address"
+            type="text"
+            name="email"
+            value={credentials.email}
+            onChange={e =>
+              handleChangeInput({ name: e.target.name, value: e.target.value })
+            }
+          />
+          {errors.email && <p className="error-message">{errors.email}</p>}
+        </div>
+        <PasswordInput
+          handleChangeInput={handleChangeInput}
+          credentials={credentials}
+          errors={errors}
+          inputName="password"
+          inputPlaceholder="Password"
+        />
+        <div className="checkbox-container">
+          <input
+            type="checkbox"
+            id="useFirebase"
+            name="useFirebase"
+            checked={useFirebase}
+            onChange={() => setUseFirebase(prevState => !prevState)}
+          />
+          <label htmlFor="useFirebase">
+            I would like to use Firebase for login
+          </label>
+        </div>
+        <div className="parall-styled-btn-container">
+          <div onClick={handleValidate} className="parall-styled-btn">
+            <button type="submit">LOGIN</button>
+          </div>
+        </div>
+      </form>
+      <div className="auth-container-bottom-text">
+        <p>
+          Don't have an account yet?{' '}
+          <span onClick={switchToSignUp}>Signup</span>
+        </p>
+        <p>Don't remember your password? Recover my Password</p>
+        <p>
+          <span
+            style={{ color: '#F8D126' }}
+            onClick={!useFirebase ? null : handleGenerateUser}
+          >
+            Generate a custom user.
+          </span>{' '}
+          Works with Firebase. See FAQ for more details
+        </p>
+      </div>
+    </AuthComponentWrapper>
   );
 };
 

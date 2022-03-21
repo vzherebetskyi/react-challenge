@@ -1,34 +1,42 @@
 html {
-  height: 100%;
-  font-size: 16px;
+  font-size: 14px;
 }
 
-// fonts
-
-@font-face {
-  font-family: "audifont";
-  src: url("../assets/fonts/auditype-normal.woff") format('woff');
+html, body {
+  height: 100vh;
 }
 
-@font-face {
-  font-family: "audifont";
-  src: url("../assets/fonts/auditype-bold.woff") format('woff');
-  font-weight: bold;
+body {
+  margin: 0;
+  font-family: 'Exo 2', sans-serif;
+  color: #fff;
+  background: rgb(12, 11, 19);
 }
 
-@font-face {
-  font-family: "audifont-extended";
-  src: url("../assets/fonts/auditype-extendednormal.woff") format('woff');
-}
+// // fonts
 
-@font-face {
-  font-family: "audifont-extended";
-  src: url("../assets/fonts/auditype-extendedbold.woff") format('woff');
-  font-weight: bold;
-}
+// @font-face {
+//   font-family: "audifont";
+//   src: url("../assets/fonts/auditype-normal.woff") format('woff');
+// }
+
+// @font-face {
+//   font-family: "audifont";
+//   src: url("../assets/fonts/auditype-bold.woff") format('woff');
+//   font-weight: bold;
+// }
+
+// @font-face {
+//   font-family: "audifont-extended";
+//   src: url("../assets/fonts/auditype-extendednormal.woff") format('woff');
+// }
+
+// @font-face {
+//   font-family: "audifont-extended";
+//   src: url("../assets/fonts/auditype-extendedbold.woff") format('woff');
+//   font-weight: bold;
+// }
 
 // colors
 
-$base-grey: #999;
-$dark-grey: #616161;
-$base-red: #e92E40;
+$base-black: rgb(12, 11, 19);

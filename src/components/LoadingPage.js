@@ -1,8 +1,10 @@
 import React from 'react';
 
+import { LoadingComponent } from './reusedComponents/LoadingComponent';
+
 const LoadingPage = () => (
-  <div>
-    <h1>Loading...</h1>
+  <div className="loader-container">
+    <LoadingComponent />
   </div>
 );
 
