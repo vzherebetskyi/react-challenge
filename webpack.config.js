@@ -11,7 +11,7 @@ module.exports = () => {
     output: {
       path: path.join(__dirname, 'public'),
       filename: 'bundle.js',
-      publicPath: '/',
+      // publicPath: '/',
     },
     module: {
       rules: [
@@ -55,10 +55,10 @@ module.exports = () => {
         }),
       ],
     },
-    devtool: 'source-map',
+    // devtool: 'source-map',
     devServer: {
       contentBase: path.join(__dirname, 'public'),
-      historyApiFallback: true,
+      // historyApiFallback: true,
     },
     node: {
       fs: 'empty',
