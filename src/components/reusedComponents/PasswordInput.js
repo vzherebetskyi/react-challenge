@@ -32,6 +32,7 @@ const PasswordInput = ({
             value: e.target.value,
           })
         }
+        data-testid="password-input"
       />
       {errors[inputName] && (
         <p className="error-message">{errors[inputName]}</p>

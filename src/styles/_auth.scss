@@ -138,4 +138,12 @@
     width: 2rem;
     height: 2rem;
   }
+  @media (max-width: 768px) {
+    width: 2rem;
+    height: 2rem;
+    img {
+      width: 2rem;
+      height: 2rem;
+    }
+  }
 }

@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
 import AuthComponentWrapper from './AuthComponentWrapper';
+import { auth } from '../../firebase/firebase';
 import { handleChangeEmail, startUserSignup } from '../../actions/auth';
 import { handleShowNotification } from '../../actions/notifications';
 import {
@@ -22,7 +23,7 @@ const RegisterPage = props => {
 
   const [credentials, setCredentials] = useState({
     username: '',
-    email: userEmail,
+    email: userEmail || '',
     password: '',
     confirmpassw: '',
   });
@@ -116,6 +117,7 @@ const RegisterPage = props => {
       if (useFirebase) {
         dispatch(
           startUserSignup(
+            auth,
             credentials.username,
             credentials.email,
             credentials.password
@@ -177,7 +179,7 @@ const RegisterPage = props => {
             checked={termsOfServiceAgreed}
             onChange={() => setTermsOfServiceAgreed(prevState => !prevState)}
           />
-          <label htmlFor="termsOfService">
+          <label data-testid="terms-of-service" htmlFor="termsOfService">
             I have read and agree with{' '}
             <a target="_blank" href="/terms_of_service">
               Terms of Service
@@ -203,6 +205,7 @@ const RegisterPage = props => {
             className={`parall-styled-btn ${
               !termsOfServiceAgreed ? 'pntr-events-none' : ''
             }`}
+            data-testid="signup-btn"
           >
             <div>Sign Up</div>
           </button>

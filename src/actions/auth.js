@@ -5,7 +5,6 @@ import {
   signOut,
 } from 'firebase/auth';
 
-import { auth } from '../firebase/firebase';
 import { handleShowNotification } from './notifications';
 import {
   handleUpdateUserProfile,
@@ -27,9 +26,10 @@ export const loginUser = userId => ({
   userId,
 });
 
-export const startLoginUser = (email, password) => {
+export const startLoginUser = (auth, email, password) => {
   return dispatch => {
     return () => {
+      dispatch(handleShowNotification('Logging in'));
       signInWithEmailAndPassword(auth, email, password)
         .then(userCredential => {
           console.log('success', userCredential);
@@ -46,7 +46,7 @@ export const startLoginUser = (email, password) => {
 
 // Sign up user
 
-export const startUserSignup = (username, email, password) => {
+export const startUserSignup = (auth, username, email, password) => {
   return dispatch => {
     return () => {
       dispatch(handleShowNotification('Pls wait you are being signed up'));
@@ -75,7 +75,7 @@ export const startUserSignup = (username, email, password) => {
 
 // Logout User
 
-export const startLogoutUser = () => {
+export const startLogoutUser = auth => {
   return dispatch => {
     return () => {
       signOut(auth)

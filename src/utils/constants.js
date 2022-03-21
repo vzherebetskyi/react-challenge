@@ -6,7 +6,7 @@ export const validEmailRegexp = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]
 export const validStrongPassword = /^(?=.*[A-Z])(?=.*[!@#$&*])(?=.*[0-9])(?=.*[a-z]).{8,}$/;
 
 export const errorMessages = {
-  emailValidity: 'Please enter valid email',
+  emailValidity: 'Please enter a valid email',
   notEmptyField: 'This field should not be empty',
   passwStrengthRequirements:
     'Password should contain at least 8 chars, at least 1 uppercase, 1 lowercase, 1 digit, 1 special char !@#$&*',

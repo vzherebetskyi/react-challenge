@@ -1,0 +1,141 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should render LoginPage correctly 1`] = `
+<div
+  className="auth-container"
+>
+  <div
+    className="auth-title-panel"
+  >
+    <img
+      alt="main-logo"
+      src={Object {}}
+    />
+  </div>
+  <div
+    className="auth-faq-button"
+    onClick={[Function]}
+  >
+    <img
+      alt="question"
+      src={Object {}}
+    />
+  </div>
+  <div
+    className="form-container"
+  >
+    <h1
+      className="base-title"
+    >
+      LOGIN
+    </h1>
+    <form
+      onKeyPress={[Function]}
+      onSubmit={[Function]}
+    >
+      <div
+        className="input-container"
+      >
+        <img
+          alt="email"
+          src={Object {}}
+        />
+        <input
+          autoComplete="off"
+          data-testid="base-input"
+          name="email"
+          onChange={[Function]}
+          placeholder="E-Mail Address"
+          type="text"
+          value=""
+        />
+        
+      </div>
+      <div
+        className="input-container"
+      >
+        <img
+          alt="lock"
+          src={Object {}}
+        />
+        <img
+          alt="eye"
+          className="input-container__eye"
+          onClick={[Function]}
+          src={Object {}}
+        />
+        <input
+          autoComplete="off"
+          data-testid="password-input"
+          name="password"
+          onChange={[Function]}
+          placeholder="Password"
+          type="password"
+          value=""
+        />
+        
+      </div>
+      <div
+        className="checkbox-container"
+      >
+        <input
+          checked={false}
+          id="useFirebase"
+          name="useFirebase"
+          onChange={[Function]}
+          type="checkbox"
+        />
+        <label
+          data-testid="usefirebase-checkbox"
+          htmlFor="useFirebase"
+        >
+          I would like to use Firebase for login
+        </label>
+      </div>
+      <div
+        className="parall-styled-btn-container"
+      >
+        <button
+          className="parall-styled-btn"
+          data-testid="login-btn"
+          type="submit"
+        >
+          <div>
+            LOGIN
+          </div>
+        </button>
+      </div>
+    </form>
+    <div
+      className="auth-container-bottom-text"
+    >
+      <p>
+        Don't have an account yet?
+         
+        <span
+          onClick={[Function]}
+        >
+          Signup
+        </span>
+      </p>
+      <p>
+        Don't remember your password? Recover my Password
+      </p>
+      <p>
+        <span
+          onClick={null}
+          style={
+            Object {
+              "color": "#F8D126",
+            }
+          }
+        >
+          Generate a custom user.
+        </span>
+         
+        Works with Firebase. See FAQ for more details
+      </p>
+    </div>
+  </div>
+</div>
+`;

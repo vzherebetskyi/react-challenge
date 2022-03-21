@@ -5,10 +5,8 @@ import {
 } from '../actions/userProfile';
 
 const initialState = {
-  userProfile: {
-    username: '',
-    email: '',
-  },
+  username: '',
+  email: '',
 };
 
 export default (state = initialState, action) => {
@@ -20,11 +18,7 @@ export default (state = initialState, action) => {
         email: action.email,
       };
     case CLEAR_USER_DATA:
-      return {
-        ...state,
-        username: '',
-        email: '',
-      };
+      return initialState;
     case UPDATE_USER_DATA:
       return {
         ...state,

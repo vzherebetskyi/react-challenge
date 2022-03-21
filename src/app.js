@@ -41,7 +41,7 @@ onAuthStateChanged(auth, user => {
       history.push('/dashboard');
     }
   } else {
-    store.dispatch(logoutUser());
+    store.dispatch(logoutUser(auth));
     store.dispatch(clearUserProfile());
     renderApp();
   }

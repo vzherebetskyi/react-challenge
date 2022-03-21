@@ -1,0 +1,82 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should render DashboardPage correctly 1`] = `
+<div
+  className="page-container"
+>
+  <div
+    className="page-wrapper"
+    style={
+      Object {
+        "alignItems": "center",
+      }
+    }
+  >
+    <div>
+      <h1
+        className="base-title"
+      >
+        Dashboard
+      </h1>
+      <div
+        style={
+          Object {
+            "display": "flex",
+          }
+        }
+      >
+        <h3
+          style={
+            Object {
+              "marginRight": "1rem",
+            }
+          }
+        >
+          Username:
+        </h3>
+        <h3>
+          
+        </h3>
+      </div>
+      <div
+        style={
+          Object {
+            "display": "flex",
+          }
+        }
+      >
+        <h3
+          style={
+            Object {
+              "marginRight": "1rem",
+            }
+          }
+        >
+          User email:
+        </h3>
+        <h3>
+          
+        </h3>
+      </div>
+      <div
+        className="parall-styled-btn-container"
+      >
+        <button
+          className="parall-styled-btn"
+          onClick={[Function]}
+          style={
+            Object {
+              "left": 0,
+              "marginTop": "2rem",
+            }
+          }
+        >
+          <div>
+            Logout
+          </div>
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+`;

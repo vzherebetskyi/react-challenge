@@ -1,14 +1,13 @@
 {
     "presets": [
-        "env",
-        "react"
+        "@babel/preset-env",
+        "@babel/preset-react"
     ],
     "plugins": [
         "transform-class-properties",
-        "transform-object-rest-spread",
+        "@babel/plugin-proposal-object-rest-spread",
         "syntax-dynamic-import",
-        ["transform-runtime", {
-            "regenerator": true
-        }]
+        "@babel/plugin-transform-runtime",
+        "@babel/transform-async-to-generator"
     ]
 }

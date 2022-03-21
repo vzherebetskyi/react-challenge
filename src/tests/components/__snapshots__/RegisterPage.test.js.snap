@@ -1,0 +1,191 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should render RegisterPage correctly 1`] = `
+<div
+  className="auth-container"
+>
+  <div
+    className="auth-title-panel"
+  >
+    <img
+      alt="main-logo"
+      src={Object {}}
+    />
+  </div>
+  <div
+    className="auth-faq-button"
+    onClick={[Function]}
+  >
+    <img
+      alt="question"
+      src={Object {}}
+    />
+  </div>
+  <div
+    className="form-container"
+  >
+    <h1
+      className="base-title"
+    >
+      SIGN UP
+    </h1>
+    <form
+      onKeyPress={[Function]}
+      onSubmit={[Function]}
+    >
+      <div
+        className="input-container"
+      >
+        <img
+          alt="username"
+          src={Object {}}
+        />
+        <input
+          autoComplete="off"
+          data-testid="base-input"
+          name="username"
+          onChange={[Function]}
+          placeholder="Username"
+          type="text"
+          value=""
+        />
+        
+      </div>
+      <div
+        className="input-container"
+      >
+        <img
+          alt="email"
+          src={Object {}}
+        />
+        <input
+          autoComplete="off"
+          data-testid="base-input"
+          name="email"
+          onChange={[Function]}
+          placeholder="E-Mail Address"
+          type="text"
+          value=""
+        />
+        
+      </div>
+      <div
+        className="input-container"
+      >
+        <img
+          alt="lock"
+          src={Object {}}
+        />
+        <img
+          alt="eye"
+          className="input-container__eye"
+          onClick={[Function]}
+          src={Object {}}
+        />
+        <input
+          autoComplete="off"
+          data-testid="password-input"
+          name="password"
+          onChange={[Function]}
+          placeholder="Password"
+          type="password"
+        />
+        
+      </div>
+      <div
+        className="input-container"
+      >
+        <img
+          alt="lock"
+          src={Object {}}
+        />
+        <img
+          alt="eye"
+          className="input-container__eye"
+          onClick={[Function]}
+          src={Object {}}
+        />
+        <input
+          autoComplete="off"
+          data-testid="password-input"
+          name="confirmpassw"
+          onChange={[Function]}
+          placeholder="Confirm password"
+          type="password"
+        />
+        
+      </div>
+      <div
+        className="checkbox-container"
+        style={
+          Object {
+            "marginBottom": 0,
+          }
+        }
+      >
+        <input
+          checked={false}
+          id="termsOfService"
+          name="termsOfService"
+          onChange={[Function]}
+          type="checkbox"
+        />
+        <label
+          data-testid="terms-of-service"
+          htmlFor="termsOfService"
+        >
+          I have read and agree with
+           
+          <a
+            href="/terms_of_service"
+            target="_blank"
+          >
+            Terms of Service
+          </a>
+        </label>
+      </div>
+      <div
+        className="checkbox-container"
+      >
+        <input
+          checked={false}
+          id="useFirebase"
+          name="useFirebase"
+          onChange={[Function]}
+          type="checkbox"
+        />
+        <label
+          htmlFor="useFirebase"
+        >
+          I would like to use Firebase for registration
+        </label>
+      </div>
+      <div
+        className="parall-styled-btn-container"
+      >
+        <button
+          className="parall-styled-btn pntr-events-none"
+          data-testid="signup-btn"
+          disabled={true}
+          type="submit"
+        >
+          <div>
+            Sign Up
+          </div>
+        </button>
+      </div>
+    </form>
+    <div
+      className="auth-container-bottom-text"
+    >
+      <p
+        onClick={[Function]}
+      >
+        <span>
+          Back to Login
+        </span>
+      </p>
+    </div>
+  </div>
+</div>
+`;

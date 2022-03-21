@@ -8,6 +8,7 @@ import {
 } from 'firebase/auth';
 
 import AuthComponentWrapper from './AuthComponentWrapper';
+import { auth } from '../../firebase/firebase';
 import { handleChangeEmail, startLoginUser } from '../../actions/auth';
 import { handleShowNotification } from '../../actions/notifications';
 import { errorMessages } from '../../utils/constants';
@@ -23,7 +24,7 @@ const LoginPage = props => {
   const enterPressed = useEnterListener();
 
   const [credentials, setCredentials] = useState({
-    email: userEmail,
+    email: userEmail || '',
     password: '',
   });
   const [errors, setErrors] = useState({
@@ -64,7 +65,9 @@ const LoginPage = props => {
     setErrors(newErrors);
     if (!errorIsPresent) {
       if (useFirebase) {
-        dispatch(startLoginUser(credentials.email, credentials.password))();
+        dispatch(
+          startLoginUser(auth, credentials.email, credentials.password)
+        )();
       } else
         dispatch(
           handleShowNotification('Provided email and password is/are incorrect')
@@ -148,12 +151,16 @@ const LoginPage = props => {
             checked={useFirebase}
             onChange={() => setUseFirebase(prevState => !prevState)}
           />
-          <label htmlFor="useFirebase">
+          <label data-testid="usefirebase-checkbox" htmlFor="useFirebase">
             I would like to use Firebase for login
           </label>
         </div>
         <div className="parall-styled-btn-container">
-          <button type="submit" className="parall-styled-btn">
+          <button
+            type="submit"
+            className="parall-styled-btn"
+            data-testid="login-btn"
+          >
             <div>LOGIN</div>
           </button>
         </div>

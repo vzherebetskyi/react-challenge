@@ -15,8 +15,6 @@ export const generateUser = async () => {
       xhr.send();
     });
   };
-
   const result = JSON.parse(await getUser());
-
   return result;
 };

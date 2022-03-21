@@ -22,6 +22,7 @@ const BaseInput = ({
           value: e.target.value,
         })
       }
+      data-testid="base-input"
     />
     {errors[inputName] && <p className="error-message">{errors[inputName]}</p>}
   </div>

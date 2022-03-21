@@ -12,10 +12,7 @@ export default (state = initialState, action) => {
         notification: action.notification,
       };
     case HIDE_NOTIFICATION:
-      return {
-        ...state,
-        notification: '',
-      };
+      return initialState;
     default:
       return state;
   }

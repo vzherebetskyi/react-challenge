@@ -1,0 +1,35 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should render AuthComponentWrapper correctly 1`] = `
+<div
+  className="auth-container"
+>
+  <div
+    className="auth-title-panel"
+  >
+    <img
+      alt="main-logo"
+      src={Object {}}
+    />
+  </div>
+  <div
+    className="auth-faq-button"
+    onClick={[Function]}
+  >
+    <img
+      alt="question"
+      src={Object {}}
+    />
+  </div>
+  <div
+    className="form-container"
+  >
+    <h1
+      className="base-title"
+    >
+      LOGIN
+    </h1>
+    <div />
+  </div>
+</div>
+`;
