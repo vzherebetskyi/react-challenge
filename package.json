@@ -5,6 +5,10 @@
   "main": "index.html",
   "author": "Volodymyr Zherebetskyi",
   "license": "MIT",
+  "engines": {
+    "node": "12.18.3",
+    "yarn": "1.22.4"
+  },
   "scripts": {
     "build:dev": "webpack-dev-server --open --watch",
     "build:prod": "webpack -p",
